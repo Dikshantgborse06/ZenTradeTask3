@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: black;
+      color: white;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    form {
+      width: 300px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: black;
+    }
+
+    .logo {
+      background-color: black; 
+      margin: 0 auto 20px; 
+      
+
+    }
+    .img-logo{
+      background-color: #333; 
+      margin: 0 auto 20px; 
+      object-fit: cover;
+      width: 100%;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: calc(100% - 16px);
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+      background-color: white;
+      color: black;
+      border: none;
+      border-radius: 3px;
+    }
+
+    button {
+      width: calc(100% - 16px);
+      padding: 10px;
+      background-color: #4caf50; /* Green color */
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .forgot-password {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .forgot-password a {
+      color: #999;
+      text-decoration: none;
+    }
+
+    .forgot-password a:hover {
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <form id="login-form">
+      <div class="logo">
+        <img class="img-logo" src="logo.png" alt="">
+      </div>
+
+      <label for="username">Username (Email):</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password-input" name="password" required>
+
+      <button type="button" onclick="validateLogin()">Login</button>
+
+      <div class="forgot-password">
+        <a href="#">Forgot Your Password?</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function validateLogin() {
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password-input').value;
+
+      // Email validation
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(username)) {
+        alert('Invalid email format');
+        return;
+      }
+
+      // Password validation
+      var passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d@]{8,}$/;
+      if (!passwordRegex.test(password)) {
+        alert('Invalid password. It must contain at least one uppercase letter, one number, no special characters other than @ and must contain 8 characters');
+        return;
+      }
+
+      // Successful login
+      alert('Login successful!!');
+      
+    }
+  </script>
+
+</body>
+</html>
